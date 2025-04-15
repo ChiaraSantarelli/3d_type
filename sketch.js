@@ -1,6 +1,6 @@
 //paramentri indipendenti
-let numero_parti = 100;
-let parola = "chi legge è scemo";
+let numero_parti = 333;
+let parola = "333";
 
 let font;
 function preload() {
@@ -23,7 +23,7 @@ function setup() {
 }
 
 function draw() {
-  background("blue");
+  background("black");
 
   orbitControl();
 
@@ -31,12 +31,12 @@ function draw() {
 
   for (let i = 0; i < numero_parti; i++) {
     push();
-    let x = map(cos(frameCount / 30 + i / 2), -1, 1, -500, 200);
-    translate(0, 0, x);
-    let y = map(cos(frameCount / 20 + i / 2), -1, 1, -500, 200);
-    translate(0, 0, y);
-    let z = map(cos(frameCount / 10 + i / 2), -1, 1, -200, 200);
-    translate(0, 0, z);
+    let x = map(cos(frameCount / 330 + i / 5), -1, 1, -333, 333);
+    translate(x, 0, 0);
+    let y = map(cos(frameCount / 330 + i / 5), -1, 1, -333, 333);
+    translate(0, y, 0);
+    let z = map(cos(frameCount / 330 + i / 3), -1, 1, -333, 333);
+    translate(300, 30, z);
 
     let y_parte = i * altezza_parti;
     let x_parola = 0;
