@@ -19,7 +19,7 @@ function setup() {
   textAlign(CENTER);
 
   altezza_parti = height / numero_parti;
-  textSize(altezza_parti);
+  textSize(altezza_parti * 2);
 }
 
 function draw() {
