@@ -1,52 +1,48 @@
-let columns = 10;
-let rows = 10;
-
-//
+//paramentri indipendenti
+let numero_parti = 100;
+let parola = "chi legge è scemo";
 
 let font;
-
 function preload() {
-  font = loadFont("./assets/InputMonoCondensed-Light.ttf");
+  font = loadFont("./Blacker-Sans-Pro-Extrabold.otf");
 }
 
-//
+//codice
+
+let altezza_parti;
 
 function setup() {
-  createCanvas(windowWidth, windowHeight, "webgl");
-  angleMode(DEGREES);
+  createCanvas(windowWidth, windowHeight, WEBGL);
+  //con webgl attivo modalità 3d
 
   textFont(font);
-  textSize(height / 10);
-}
+  textAlign(CENTER);
 
-//
+  altezza_parti = height / numero_parti;
+  textSize(altezza_parti);
+}
 
 function draw() {
   background("blue");
+
   orbitControl();
 
-  let angle = 360 / columns;
-  let diameter = textSize();
+  translate(0, -height / 2);
 
-  fill("white");
-
-  rotateY(-frameCount);
-  for (let i = 0; i < columns; i++) {
+  for (let i = 0; i < numero_parti; i++) {
     push();
-    rotateY(angle * i);
-    translate(diameter, 0, 0);
-    for (let j = 0; j < rows; j++) {
-      const a = cos(frameCount * 5 + j * 20);
-      const m = map(a, -1, 1, 0, textSize());
-      push();
-      translate(m, textSize() * (j - rows / 2), 0);
-      text("Ciao", 0, 0);
-      pop();
-    }
+    let x = map(cos(frameCount / 30 + i / 2), -1, 1, -500, 200);
+    translate(0, 0, x);
+    let y = map(cos(frameCount / 20 + i / 2), -1, 1, -500, 200);
+    translate(0, 0, y);
+    let z = map(cos(frameCount / 10 + i / 2), -1, 1, -200, 200);
+    translate(0, 0, z);
+
+    let y_parte = i * altezza_parti;
+    let x_parola = 0;
+    let y_parola = y_parte + altezza_parti - textDescent();
+
+    text(parola, x_parola, y_parola);
     pop();
   }
-}
-
-function windowResized() {
-  resizeCanvas(windowWidth, windowHeight);
 }
