@@ -8,7 +8,7 @@ function preload() {
 }
 
 //codice
-
+let camera
 let altezza_parti;
 
 function setup() {
@@ -17,6 +17,9 @@ function setup() {
 
   textFont(font);
   textAlign(CENTER);
+
+  cam = createCamera();
+  cam.setPosition(10,10,10);
 
   altezza_parti = height / numero_parti;
   textSize(altezza_parti * 2);
